@@ -29,7 +29,15 @@ const CompanyHeader = () => (
   </div>
 );
 
-const ChannelListContainer = ({ isCreating, setIsCreating, setCreateType, setIsEditing }) => {
+const customChannelTeamFilter = (channels) => {
+  return channels.filter((channel) => channel.type === 'team');
+}
+
+const customChannelMessagingFilter = (channels) => {
+  return channels.filter((channel) => channel.type === 'messaging');
+}
+
+const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEditing }) => {
   const logout = () => {
     cookies.remove('token');
     cookies.remove('username');
@@ -50,10 +58,10 @@ const ChannelListContainer = ({ isCreating, setIsCreating, setCreateType, setIsE
         <ChannelSearch />
         <ChannelList
           filters={{}}
-          channelRenderFilterFn={() => {}}
+          channelRenderFilterFn={customChannelTeamFilter}
           List={(listProps) => (
             <TeamChannelList 
-              {...listProps}
+              { ... listProps}
               type="team"
               isCreating={isCreating}
               setIsCreating={setIsCreating}
@@ -70,10 +78,10 @@ const ChannelListContainer = ({ isCreating, setIsCreating, setCreateType, setIsE
         />
         <ChannelList
           filters={{}}
-          channelRenderFilterFn={() => {}}
+          channelRenderFilterFn={customChannelMessagingFilter}
           List={(listProps) => (
             <TeamChannelList 
-              {...listProps}
+              { ... listProps}
               type="messaging"
               isCreating={isCreating}
               setIsCreating={setIsCreating}
