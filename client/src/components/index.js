@@ -9,3 +9,5 @@ export { default as CreateChannel } from '@/components/CreateChannel';
 export { default as EditChannel } from '@/components/EditChannel';
 export { default as TeamMessage } from '@/components/TeamMessage';
 export { default as UserList } from '@/components/UserList';
+export { default as ChannelNameInput } from '@/components/ChannelNameInput';
+export { default as ResultsDropdown } from '@/components/ResultsDropdown';
